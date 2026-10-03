@@ -10,9 +10,11 @@
 export const SITE_NAME = "Root & Reach Creative";
 
 /** Production origin — single source of truth for absolute URLs (sitemap, robots, metadataBase). */
-/* TODO(OPEN-ITEM 2): the domain isn't decided yet. Placeholder until it is —
-   canonicals, sitemap and robots all read this, so change it before launch. */
-export const SITE_URL = "https://example.com";
+/* TODO(OPEN-ITEM 2): the domain isn't decided yet, so this is the Vercel
+   preview Cristina reviews. It was example.com, which made every og:image
+   point at a dead host — iMessage then grabbed the transparent portrait and
+   showed it on black. Switch to the real domain before launch. */
+export const SITE_URL = "https://root-and-reach-website.vercel.app";
 
 /* ---------------------------------------------------------------------------
  * Review chrome — TEMPORARY, for the client-review phase only
