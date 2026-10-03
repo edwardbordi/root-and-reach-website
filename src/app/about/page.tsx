@@ -28,7 +28,7 @@ export default function AboutPage() {
             </h1>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mt-6 text-lg leading-relaxed text-slate">
+            <p className="wrap-balance mt-6 text-lg leading-relaxed text-slate">
               Replace this with your story — who you are, what you do, and why it matters to the people you
               serve. Keep it specific and human; unique, first-hand content is what wins in both Google and
               AI search.

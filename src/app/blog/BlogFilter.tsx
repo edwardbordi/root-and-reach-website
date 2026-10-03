@@ -22,15 +22,6 @@ export type BlogCard = {
   readMinutes: number;
 };
 
-// Four-corner registration ticks — the brand framing motif, signal-blue at the
-// same strength used on the homepage testimonial cards.
-const CORNER_TICKS = [
-  "left-3.5 top-3.5 border-l border-t",
-  "right-3.5 top-3.5 border-r border-t",
-  "bottom-3.5 left-3.5 border-b border-l",
-  "bottom-3.5 right-3.5 border-b border-r",
-];
-
 function FilterChip({
   label,
   count,
@@ -85,14 +76,6 @@ function PostCard({
       href={`/blog/${post.slug}`}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-colors hover:border-slate/40"
     >
-      {CORNER_TICKS.map((pos) => (
-        <span
-          key={pos}
-          aria-hidden="true"
-          className={`pointer-events-none absolute z-10 h-2.5 w-2.5 border-signal/40 ${pos}`}
-        />
-      ))}
-
       {post.heroImage && (
         <div className="relative aspect-video w-full overflow-hidden border-b border-line bg-bone-2">
           {/* Image Law: next/image, not raw <img>. alt="" is correct HERE —
@@ -147,7 +130,7 @@ function PostCard({
 
         <div className="mt-auto pt-8">
           <span className="font-mono-label inline-flex items-center gap-2 text-sm text-ink">
-            Read
+            Read it
             <ForwardArrow />
           </span>
         </div>
@@ -217,7 +200,7 @@ export default function BlogFilter({ posts }: { posts: BlogCard[] }) {
 
       {visible.length === 0 ? (
         <p className="font-mono-label mt-12 text-sm text-slate">
-          No posts{selected ? ` tagged #${selected}` : ""} yet.
+          Nothing{selected ? ` tagged #${selected}` : ""} yet. More soon.
         </p>
       ) : (
         // One grid, featured-first. Featured cards span 2 of the 3 lg columns

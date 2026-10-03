@@ -40,8 +40,9 @@ import type { ReactNode } from "react";
  * term on scroll/resize while open and flips above the term when there isn't
  * room below, so it can never be clipped by a container.
  *
- * The affordance is a subtle dotted underline in a muted tone that shifts to the
- * signal blue on hover/focus.
+ * Root & Reach styling: a dotted rust underline (stronger on hover/focus), and
+ * a warm espresso bubble topped with the orange/sand/seafoam stripe from the
+ * footer (.term-bubble in globals.css).
  */
 
 const WIDTH = 272; // px — fixed bubble width for predictable positioning
@@ -225,7 +226,7 @@ export default function Term({
           if (e.currentTarget.matches(":focus-visible")) setOpen(true);
         }}
         onBlur={() => setOpen(false)}
-        className="cursor-help text-inherit underline decoration-dotted decoration-current/50 underline-offset-4 transition-colors hover:decoration-signal focus-visible:rounded-xs focus-visible:decoration-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+        className="cursor-help text-inherit underline decoration-signal/70 decoration-dotted decoration-[1.5px] underline-offset-[5px] transition-colors hover:decoration-signal focus-visible:rounded-xs focus-visible:decoration-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
       >
         {children}
       </span>
@@ -246,14 +247,14 @@ export default function Term({
           <div
             ref={tipRef}
             aria-hidden="true"
-            className={`pointer-events-none fixed z-1000 rounded-lg border border-white/15 bg-ink px-5 py-4 text-left text-sm font-normal leading-snug text-bone shadow-lg transition-opacity duration-150 ${
+            className={`term-bubble pointer-events-none fixed z-1000 overflow-visible rounded-xl border border-white/15 bg-espresso px-5 pb-4 pt-5 text-left text-sm font-normal leading-relaxed text-bone shadow-lg transition-opacity duration-150 ${
               ready ? "opacity-100" : "opacity-0"
             }`}
             style={{ top: pos.top, left: pos.left, width: pos.width }}
           >
             <span
               aria-hidden="true"
-              className="absolute h-2 w-2 rotate-45 rounded-xs bg-ink"
+              className="absolute h-2 w-2 rotate-45 rounded-xs bg-espresso"
               style={{
                 left: pos.caretLeft,
                 marginLeft: -4,

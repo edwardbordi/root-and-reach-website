@@ -76,7 +76,7 @@ export default function MobileMenu() {
   }, [open]);
 
   return (
-    <div className="sm:hidden">
+    <div className="lg:hidden">
       <button
         ref={buttonRef}
         type="button"
@@ -129,7 +129,7 @@ export default function MobileMenu() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="font-display rounded-lg px-3 py-2.5 text-lg font-semibold text-ink transition-colors hover:bg-bone-2"
+                  className="font-display rounded-lg px-3 py-2.5 text-2xl text-ink transition-colors hover:bg-bone-2"
                 >
                   {l.label}
                 </Link>

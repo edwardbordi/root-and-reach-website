@@ -10,7 +10,7 @@ import { getAllPosts, type Post } from "./posts";
  */
 
 /** Posts per archive page. One number, one place — never inline this. */
-export const POSTS_PER_PAGE = 9;
+export const POSTS_PER_PAGE = 6;
 
 /**
  * The archive order: `featured` posts first, then newest-first.
