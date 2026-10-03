@@ -40,7 +40,11 @@ export const PREVIEW_CHROME = true;
  * point here, or use a YouTube embed URL. A Loom URL works but loses the speed
  * and fullscreen controls. Empty — the default — makes the widget say it's coming.
  */
-export const PREVIEW_WALKTHROUGH_URL: string = "";
+/* NOTE THE /embed/ — a Loom share link is NOT an embed link. The widget drops
+   this straight into an iframe, and `loom.com/share/<id>` renders Loom's own
+   page rather than the bare player. Same id either way. */
+export const PREVIEW_WALKTHROUGH_URL: string =
+  "https://www.loom.com/embed/25775138e553425c847e8669aa0ce2dc";
 
 /** Where feedback goes when no FEEDBACK_WEBHOOK_URL is set. Your address, not the client's. */
 export const PREVIEW_FEEDBACK_EMAIL = "ed@realiiz.com";
@@ -49,6 +53,10 @@ export const PREVIEW_FEEDBACK_EMAIL = "ed@realiiz.com";
 /* The preview deployment Cristina is reviewing — NOT SITE_URL, which isn't
    live. Assumes Vercel's default name for this repo; correct it once deployed. */
 export const PREVIEW_TEST_URL = "https://root-and-reach-website.vercel.app";
+
+/** What the walkthrough's "open this on your phone" QR points to. Ed's tracked
+ *  short link (redirects to the preview). Empty falls back to PREVIEW_TEST_URL. */
+export const PREVIEW_QR_URL: string = "https://link.sendlink.co/qr/MyFRHmFo6xH_";
 
 /**
  * Home-page versions to offer the reviewer, when a build is showing more than

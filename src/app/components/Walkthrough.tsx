@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 /** Playback-speed presets — shown for YouTube/mp4 (which accept speed commands), not Loom. */
 const SPEEDS = [1, 1.5, 2] as const;
-import { PREVIEW_WALKTHROUGH_URL, PREVIEW_TEST_URL } from "../../lib/site-config";
+import { PREVIEW_WALKTHROUGH_URL, PREVIEW_TEST_URL, PREVIEW_QR_URL } from "../../lib/site-config";
 import { useEdgeDock } from "./useEdgeDock";
 import Image from "next/image";
 import { PlayIcon } from "./ReviewIcons";
@@ -29,7 +29,7 @@ export default function Walkthrough() {
     let cancelled = false;
     import("qrcode").then(async (QR) => {
       try {
-        const svg = await QR.toString(PREVIEW_TEST_URL, { type: "svg", margin: 1, color: { dark: "#000000", light: "#ffffff" } });
+        const svg = await QR.toString(PREVIEW_QR_URL || PREVIEW_TEST_URL, { type: "svg", margin: 1, color: { dark: "#000000", light: "#ffffff" } });
         if (!cancelled) setQr(`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`);
       } catch {}
     });
@@ -131,7 +131,7 @@ export default function Walkthrough() {
 
         <p className="font-display mt-3 text-xl font-bold uppercase leading-none">Start here.</p>
         <p className="mt-2 text-sm leading-snug text-paper/85">
-          A seven-minute tour of this preview: what&apos;s built, how to flip between the home page versions, and the ways you can send feedback.
+          A quick tour of this preview: what&apos;s built so far, what&apos;s coming next, and how to send your feedback.
         </p>
 
         {/* The player: title bar + picture inside one muted frame. */}
@@ -229,7 +229,7 @@ export default function Walkthrough() {
           )}
           <div className="min-w-0 text-sm leading-snug">
             <p className="font-semibold text-paper">Open this on your phone.</p>
-            <p className="mt-0.5 text-xs text-paper/60">Point your camera at the code — most of Jason&apos;s customers will see the site on a phone, so that&apos;s the view that matters.</p>
+            <p className="mt-0.5 text-xs text-paper/60">Point your camera at the code — most of your clients will see the site on a phone, so that&apos;s the view that matters.</p>
           </div>
         </div>
 
