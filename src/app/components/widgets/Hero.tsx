@@ -12,7 +12,7 @@ import Scribble from "../Scribble";
 // her portrait. Everything else is espresso or neutral.
 export interface HeroProps {
   id?: string;
-  eyebrow?: string;
+  eyebrow?: React.ReactNode;
   /** Plain text before the highlighted words */
   titleLead: string;
   /** The words that get the hand-drawn underline */

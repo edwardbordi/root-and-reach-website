@@ -13,7 +13,7 @@ export interface ScaryToEasyProps {
   heading: string;
   beforeLabel: string;
   afterLabel: string;
-  rows: { before: string; after: string }[];
+  rows: { before: string; after: React.ReactNode }[];
   /** Closing line under the rows, e.g. "And it's actually fun. Really." */
   closing?: string;
   /** A word in the closing line that gets the hero's seafoam highlighter. */

@@ -65,7 +65,11 @@ export default function Home() {
       <main id="main" className="flex-1">
         <Hero
           id="top"
-          eyebrow="Content creation for small businesses"
+          eyebrow={
+            <>
+              Content creation<span className="hidden sm:inline"> for small businesses</span>
+            </>
+          }
           titleLead="Being on camera doesn't have to be"
           titleHighlight="scary."
           titleSwap="fun!"
@@ -94,7 +98,14 @@ export default function Home() {
           rows={[
             { before: "A script that doesn't sound like you.", after: "Your message, shaped together." },
             { before: "Feeling judged the second the camera's on.", after: "Comfortable, so you look like you." },
-            { before: "A folder of files and no idea what's next.", after: "You leave more confident than you came." },
+            {
+              before: "A folder of files and no idea what's next.",
+              after: (
+                <>
+                  You leave more confident<span className="hidden sm:inline"> than you came</span>.
+                </>
+              ),
+            },
           ]}
           closing="And it's actually fun. Really."
           closingHighlight="fun"
