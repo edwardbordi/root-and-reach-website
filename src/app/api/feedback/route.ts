@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { SITE_NAME } from "../../../lib/site-config";
 
 /**
  * TEMPORARY — client-review feedback endpoint (the Notes widget and the
@@ -50,6 +51,8 @@ export async function POST(req: Request) {
     message: s("message"),
     /** Why an approval is being withdrawn (kind = withdrawal). */
     reason: s("reason"),
+    /** Which site this came from — so one shared webhook/workflow can serve every client preview. */
+    site: SITE_NAME,
     source: "preview-review",
     receivedAt: new Date().toISOString(),
   };

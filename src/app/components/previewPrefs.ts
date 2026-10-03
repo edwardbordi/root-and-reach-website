@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 export type PreviewPrefs = { walkthrough: boolean; versions: boolean; speed: boolean; notes: boolean; needs: boolean };
 const KEY = "review-widgets";
 const EVENT = "review-widgets-change";
-const DEFAULTS: PreviewPrefs = { walkthrough: false, versions: false, speed: false, notes: false, needs: false };
+const DEFAULTS: PreviewPrefs = { walkthrough: true, versions: false, speed: false, notes: false, needs: false };
 
 export const WIDGETS: { key: keyof PreviewPrefs; label: string; hint: string; icon: "play" | "layout" | "gauge" | "note" | "needs" }[] = [
   { key: "walkthrough", label: "Walkthrough", hint: "A short video on what this preview is", icon: "play" },

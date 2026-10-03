@@ -8,6 +8,20 @@ import { test, expect } from '@playwright/test';
  * hero never breaks CI. Runs against the production build (see
  * playwright.config.ts webServer).
  */
+// The preview review kit opens its walkthrough panel on a first visit, and the
+// panel sits over page content. Start every test with all review widgets off so
+// clicks land on the page, not the panel.
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    try {
+      localStorage.setItem(
+        'review-widgets',
+        JSON.stringify({ walkthrough: false, versions: false, speed: false, notes: false, needs: false }),
+      );
+    } catch {}
+  });
+});
+
 test.describe('site smoke tests', () => {
   test('homepage responds successfully', async ({ page }) => {
     const response = await page.goto('/');
