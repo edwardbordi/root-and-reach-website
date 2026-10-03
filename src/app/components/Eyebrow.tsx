@@ -6,13 +6,15 @@ export default function Eyebrow({
   align = "start",
 }: {
   children: React.ReactNode;
-  tone?: "slate" | "signal" | "bone";
+  tone?: "slate" | "signal" | "signal-strong" | "bone";
   /** Horizontal alignment of the tick+label row. Use "center" inside centered heroes. */
   align?: "start" | "center";
 }) {
   const color =
     tone === "signal"
       ? "text-signal"
+      : tone === "signal-strong"
+        ? "text-signal-strong" // rust that still passes contrast on blush/sand bands
       : tone === "bone"
         ? "text-bone/55"
         : "text-slate";

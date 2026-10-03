@@ -1,42 +1,50 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   THEME — this is a DISPOSABLE starter skeleton. REPLACE ALL OF IT.
+   THEME — Root & Reach Creative.  Spec: design-process/DESIGN-BRIEF.md
 
-   These are deliberately plain, neutral placeholder tokens + system fonts so the
-   default site looks unfinished — because it is. The FRAMEWORK (the SEO contract,
-   the blog engine, the schemas, the laws) does NOT depend on any of these values.
-   Change every color, font, radius, width, and the whole design here and in the
-   components/pages. Nothing about "how it's wired" changes when you do.
+   "The world, seen through Cristina's lens." Every color is pulled from her
+   logo. The logo's colors are all light, so each family has a deeper partner
+   for anything people read or click:
 
-   → Run the design interview (see design-process/ and the `theme` skill) to
-     generate a real design system, then paste it in here.
+     surfaces / graphics only:  orange · seafoam · sand · blush · sage
+     text and actions:          ink · slate · signal (rust) · signal-2 (deep teal)
+
+   Rule: a logo color is never text on the light page. Actions are always
+   signal (rust). Token NAMES are the template's; only values changed.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Neutral placeholder palette (grayscale + one plain accent). Replace. */
-  --color-ink: #171717;      /* primary text */
-  --color-ink-2: #262626;
-  --color-bone: #fafafa;     /* page background */
-  --color-bone-2: #f1f1f1;
-  --color-paper: #ffffff;
-  --color-signal: #2563eb;   /* accent / links — swap for your brand color */
-  --color-signal-strong: #1d4ed8;
-  --color-signal-light: #60a5fa;
-  --color-signal-2: #0d9488;
-  --color-slate: #6b7280;    /* muted text */
-  --color-line: #e5e5e5;     /* borders */
-  --color-line-dark: #d4d4d4;
-  --color-amber: #d97706;    /* caution accent */
+  --color-ink: #1c1a18;          /* line art + wordmark · 15.8:1 on bone */
+  --color-ink-2: #2e2a26;
+  --color-bone: #f7f4ee;         /* page — the logo's off-white, warmed */
+  --color-bone-2: #efe9df;       /* alternating bands */
+  --color-paper: #fffdf9;        /* raised cards */
+  --color-signal: #a4501f;       /* rust: every action · 5.1:1 on bone */
+  --color-signal-strong: #843f17;/* hover / pressed · 7.1:1 */
+  --color-signal-light: #d5844f; /* the lens orange — text only on ink (6.0:1) */
+  --color-signal-2: #2f6b63;     /* deep teal: eyebrows, labels · 5.6:1 */
+  --color-slate: #5f5850;        /* muted text · 6.4:1 */
+  --color-line: #e3dbcc;         /* hairlines (decorative) */
+  --color-line-dark: #8f857a;    /* borders a user must see · 3.3:1 */
+  --color-amber: #d5844f;
 
-  /* Type — system stacks by default (no web font). Replace with your fonts. */
-  --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* The logo's own colors — surfaces and graphics, never text on bone. */
+  --color-orange: #d5844f;
+  --color-seafoam: #b3dfd3;
+  --color-sand: #ded1a4;
+  --color-blush: #e9bfac;
+  --color-sage: #c1bd92;
+  --color-olive: #5e5c3a;        /* deep sage: small print · 6.2:1 */
+  --color-espresso: #3b2417;     /* the wordmark · 13.2:1 on bone */
+
+  /* Type — loaded with next/font in layout.tsx, which sets the variables. */
+  --font-display: var(--font-bebas), "Arial Narrow", Impact, sans-serif;
+  --font-body: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-josefin), ui-sans-serif, system-ui, sans-serif;
 
   --ease-precise: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Content widths — prose reading column vs. the wider media band. */
   --w-prose: 680px;
   --w-visual: 860px;
 }
@@ -46,9 +54,11 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  /* offset anchored sections below the sticky nav */
-  scroll-padding-top: 6rem;
+  /* In-page links glide via SmoothAnchors.tsx (eased, distance-based), which
+     needs the browser's own smooth scrolling off: with both on, every frame of
+     the glide was itself animated and it stuttered. The header isn't sticky
+     and sections carry their own top padding, so no scroll offset. */
+  scroll-behavior: auto;
 }
 
 body {
@@ -62,19 +72,23 @@ body {
 /* Display + mono helpers */
 .font-display {
   font-family: var(--font-display), system-ui, sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
+  font-weight: 400; /* Bebas Neue has one weight; never fake-bold it */
 }
+/* The label voice: the thin, wide-spaced "CREATIVE" under the wordmark. */
 .font-mono-label {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-sans-serif, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 /* Mono eyebrow label — the "data/measurement" voice */
 .eyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  font-family: var(--font-mono), ui-sans-serif, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
 }
 /* a11y: small signal-blue eyebrow labels use the darker shade so they clear
    WCAG AA on the light background (the bright brand blue stays for everything
@@ -99,10 +113,10 @@ body {
 }
 .legal-prose h2 {
   font-family: var(--font-display), system-ui, sans-serif;
-  letter-spacing: -0.02em;
-  font-size: 1.5rem;
-  line-height: 1.25;
-  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 1.9rem;
+  line-height: 1.05;
+  font-weight: 400;
   color: var(--color-ink);
   margin-top: 3rem;
   scroll-margin-top: 6rem;
@@ -177,22 +191,25 @@ body {
 .blog-prose em {
   font-style: italic;
 }
+/* Bebas: one weight only (600 would be a faked, smudged bold) and narrow by
+   design, so it gets normal-plus tracking and a larger size than a regular
+   heading face would. */
 .blog-prose h2 {
   font-family: var(--font-display), system-ui, sans-serif;
-  letter-spacing: -0.02em;
-  font-size: 1.75rem;
-  line-height: 1.2;
-  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 2.1rem;
+  line-height: 1.05;
+  font-weight: 400;
   color: var(--color-ink);
   margin-top: 3rem;
   scroll-margin-top: 6rem;
 }
 .blog-prose h3 {
   font-family: var(--font-display), system-ui, sans-serif;
-  letter-spacing: -0.02em;
-  font-size: 1.3rem;
-  line-height: 1.3;
-  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  font-weight: 400;
   color: var(--color-ink);
   margin-top: 2.25rem;
   scroll-margin-top: 6rem;
@@ -495,6 +512,10 @@ body {
 [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+  /* Drop the layer hint once revealed: left on, the browser keeps the block
+     as a flattened bitmap, and anything tilted inside it (like her lens
+     mark) is resampled and goes jagged instead of staying crisp vector. */
+  will-change: auto;
 }
 /* Eager variant — above-the-fold reveals animate via pure CSS on load, so
    the LCP element is never held invisible waiting for hydration. */
@@ -571,7 +592,18 @@ body {
    single-word last lines in running text. Progressive — older browsers
    simply wrap as before. */
 h1, h2, h3, h4 { text-wrap: balance; }
-p, li { text-wrap: pretty; }
+p, li, dd, blockquote, figcaption { text-wrap: pretty; }
+
+/* `.wrap-balance`: the same rule as Neoteric and realiiz. For SHORT copy
+   (card bodies, intros, ledes) where a stranded last line shows. `pretty`
+   above only stops a single word sitting alone; two still can ("it fun.").
+   `balance` evens every line, so the last one comes out a normal length.
+   It's a class, not a blanket rule, because browsers stop balancing past
+   about six lines and fall back to plain wrapping, losing `pretty`'s
+   protection too: keep it off long paragraphs and the longer review quotes.
+   CSS has no "at least N words on the last line" control, so this is much
+   better, not a guarantee. */
+.wrap-balance { text-wrap: balance; }
 
 /* ---- Dark mode (opt-in kit) -------------------------------------------
    .theme-dark on the theme scope (<body id="theme-scope">) re-maps the
@@ -687,4 +719,599 @@ html[data-show-needs] [data-needs][data-needs-empty] {
 .scroll-dark {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.28) #111111;
+}
+
+/* ═══ Root & Reach — site styles ═══════════════════════════════════════════ */
+
+/* The one action style. Rust with bone text (5.1:1); soft corners, like the logo. */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-signal);
+  color: var(--color-bone);
+  padding: 0.7rem 1.35rem 0.6rem;
+  font-family: var(--font-mono), ui-sans-serif, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background-color 160ms var(--ease-precise), transform 160ms var(--ease-precise);
+}
+.btn-primary:hover {
+  background: var(--color-signal-strong);
+  color: var(--color-bone);
+}
+/* The little extra (option 5, "rings"): on hover the button keeps its rust
+   and stays put, and three rings in the lens colors ripple out from it
+   (orange, then sand, then seafoam) and stay while hovered, echoing the
+   concentric rings in the logo. Each ring's width is its own typed custom
+   property, so each one grows smoothly on its own slightly staggered
+   timing, and they ease back in the same way. Reduced motion: instant. */
+@property --ring-w1 { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --ring-w2 { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --ring-w3 { syntax: "<length>"; inherits: false; initial-value: 0px; }
+.btn-primary {
+  --ring-1: var(--color-orange);
+  --ring-2: var(--color-sand);
+  --ring-3: var(--color-seafoam);
+  box-shadow: 0 0 0 var(--ring-w1) var(--ring-1), 0 0 0 var(--ring-w2) var(--ring-2), 0 0 0 var(--ring-w3) var(--ring-3);
+}
+/* On a seafoam band the outer ring would vanish, so it swaps to bone there. */
+.on-color .btn-primary {
+  --ring-3: var(--color-bone);
+}
+.btn-primary:hover {
+  background: var(--color-signal);
+  --ring-w1: 3px;
+  --ring-w2: 6px;
+  --ring-w3: 9px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn-primary {
+    transition:
+      background-color 160ms var(--ease-precise),
+      --ring-w1 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      --ring-w2 520ms cubic-bezier(0.22, 1, 0.36, 1) 70ms,
+      --ring-w3 620ms cubic-bezier(0.22, 1, 0.36, 1) 140ms;
+  }
+}
+.btn-primary:active {
+  --ring-w3: 6px;
+}
+/* On a blush/seafoam/sand band rust drops to ~3.3:1, so the button goes ink there. */
+.on-color .btn-primary {
+  background: var(--color-ink);
+}
+.on-color .btn-primary:hover {
+  background: var(--color-ink-2);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  /* A hairline: 0.75px draws finer on high-density screens, and the softer
+     color makes it read lighter everywhere. The label carries the meaning. */
+  border: 0.75px solid color-mix(in srgb, var(--color-line-dark) 70%, var(--color-bone));
+  color: var(--color-ink);
+  padding: 0.7rem 1.35rem 0.6rem;
+  font-family: var(--font-mono), ui-sans-serif, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: border-color 160ms var(--ease-precise);
+}
+.btn-ghost:hover {
+  border-color: var(--color-ink);
+}
+
+/* Visible keyboard focus everywhere, in the action color. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2.5px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.bg-ink :where(a, button):focus-visible {
+  outline-color: var(--color-signal-light);
+}
+
+/* The highlight (idea 3): a seafoam marker swipe behind the lower part of the
+   word, slightly tilted with uneven ends, like a real highlighter pass. It sits
+   behind the letters, wipes in left to right once just after the headline
+   appears, and is already drawn for reduced motion. Trailing punctuation is
+   left out by components/Scribble.tsx. */
+.scribble {
+  position: relative;
+  display: inline-block;
+  isolation: isolate; /* keeps the swipe behind the word but above the page */
+}
+.scribble::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.06em;
+  right: -0.06em;
+  bottom: 0.02em;
+  height: 0.42em;
+  background: var(--color-seafoam);
+  border-radius: 0.08em 0.2em 0.12em 0.25em;
+  transform: rotate(-1.5deg);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .scribble::after {
+    animation: scribble-draw 0.9s var(--ease-precise) 0.55s both;
+  }
+}
+/* A wipe, not a stretch: the swipe keeps its shape as it appears. */
+@keyframes scribble-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* The hover easter egg (components/Scribble.tsx): hovering the headline draws
+   a crisp line through SCARY, then "should be fun!" writes itself in after
+   the period ("fun!" large, "should be" small beside the top of the f). Everything undoes
+   when the pointer leaves. Desktop pointers only; with reduced motion the swap
+   is instant, no drawing. */
+.x-arrow,
+.x-fun {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .x-arrow {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    left: -0.04em;
+    right: -0.05em; /* just a hair wider than the word */
+    top: 50%;
+    height: 0.36em;
+    transform: translateY(-50%);
+    clip-path: inset(-20% 102% -20% -2%);
+    transition: clip-path 220ms var(--ease-precise) 140ms;
+    pointer-events: none;
+  }
+  /* A crisp rust line drawn like the "fun!" lettering: the same stroke weight
+     as Gochi Hand (measured: stems are 0.11 of its em, and "fun!" is set at
+     0.66em, so 0.073em here at its widest), and the same marker feel. Its
+     thickness varies along the stroke the way the letters' do: it starts
+     about 40% lighter and builds steadily to full weight at the end, like a
+     marker pressed harder as it goes. The ends are blunt with soft corners, slanted like a
+     felt-tip held at an angle (the skew). Tilted up to the right at the
+     highlight's angle (-1.5deg). */
+  .x-arrow::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 0.073em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 380 10' preserveAspectRatio='none'%3E%3Cpath fill='%23a4501f' d='M3 2 C100 1.6 250 0.6 377 0 Q380 0 380 2.5 L380 7.5 Q380 10 377 10 C250 9.4 100 8.4 3 8 Q0 8 0 6 L0 4 Q0 2 3 2 Z'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+    transform: translateY(-50%) rotate(-1.5deg) skewX(-16deg);
+    transform-origin: left center;
+  }
+  .x-fun {
+    display: block;
+    position: absolute;
+    left: calc(100% + 0.36em); /* after the period (~0.2em) */
+    top: 50%;
+    transform: translateY(calc(-52% - 0.08em)) rotate(-3deg); /* lifted to meet the tilted line */
+    font-family: var(--font-fun), cursive;
+    font-size: 0.66em;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: var(--color-signal);
+    /* Generous top inset: the small note sits above the word. */
+    clip-path: inset(-160% 105% -30% -5%);
+    transition: clip-path 160ms var(--ease-precise) 0ms;
+    pointer-events: none;
+  }
+  /* "should be": small and locked to "fun!" as one block. Measured from the
+     rendered letters: it spans exactly the width of "un" (starting where the
+     u starts, ending where the "!" begins), sits just above their tops, and
+     tucks in beside the f's ascender. It rotates with "fun!", so the angle
+     matches. */
+  .x-note {
+    position: absolute;
+    left: 21.3%;
+    bottom: 73%;
+    font-size: 0.21em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .swap-trigger:hover .x-arrow {
+    clip-path: inset(-20% -2% -20% -2%);
+    transition: clip-path 380ms var(--ease-precise) 0ms;
+  }
+  .swap-trigger:hover .x-fun {
+    clip-path: inset(-160% -10% -30% -5%);
+    transition: clip-path 360ms var(--ease-precise) 360ms;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .x-arrow,
+  .x-fun {
+    transition: none !important;
+  }
+}
+
+/* The swirl turns slowly when its card is hovered. */
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .swirl-spin {
+    animation: swirl-turn 9s linear infinite;
+  }
+}
+@keyframes swirl-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* A photo slot waiting on Cristina. Designed, never a stock stand-in:
+   a logo-color field with a line-drawn frame and a plain label. */
+.photo-slot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1.5px solid var(--color-ink);
+  background: var(--color-blush);
+  padding: 1rem 1.1rem;
+  color: var(--color-ink);
+  font-family: var(--font-mono), ui-sans-serif, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* The wordmark's ampersand: Oswald SemiBold for this one glyph. Same tall,
+   condensed build as Bebas, with a shapelier "&" than Bebas's own, so it reads
+   as part of the word. Same color as the name. Static — no motion. */
+.amp {
+  display: inline-block;
+  font-family: var(--font-amp), "Arial Narrow", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9em;
+  letter-spacing: 0;
+  color: inherit;
+}
+
+/* ═══ The hero portrait comes alive ═══════════════════════════════════════
+   One short, choreographed moment on load, after the headline and its
+   underline: the flowers sway as if a breeze passed, the badge swirl makes a
+   quarter turn, then she winks. Hovering the portrait plays the sway and the
+   wink again. Nothing loops. Reduced motion: everything stays still. */
+.portrait-layer {
+  pointer-events: none;
+}
+.portrait-sprig { transform-origin: 72.8% 27.8%; }      /* where the stem leaves her hair */
+.portrait-flower-mid { transform-origin: 68% 55.6%; }
+.portrait-flower-low { transform-origin: 63.9% 83.3%; }
+.portrait-eye { transform-origin: 47.3% 50.2%; }          /* centre of the iris */
+
+@media (prefers-reduced-motion: no-preference) {
+  .portrait-sprig { animation: sway-a 2.4s var(--ease-precise) 0.9s 1 both; }
+  .portrait-flower-mid { animation: sway-b 2.2s var(--ease-precise) 1.05s 1 both; }
+  .portrait-flower-low { animation: sway-a 2.3s var(--ease-precise) 1.2s 1 both; }
+  .portrait-eye { animation: wink 0.62s ease-in-out 2.7s 1 both; }
+
+  /* Hover replays them. Separate keyframe names make the browser restart. */
+  .portrait:hover .portrait-sprig { animation: sway-a-again 2.4s var(--ease-precise) 0s 1 both; }
+  .portrait:hover .portrait-flower-mid { animation: sway-b-again 2.2s var(--ease-precise) 0.1s 1 both; }
+  .portrait:hover .portrait-flower-low { animation: sway-a-again 2.3s var(--ease-precise) 0.2s 1 both; }
+  .portrait:hover .portrait-eye { animation: wink-again 0.62s ease-in-out 0.5s 1 both; }
+
+  .swirl-once { animation: quarter-turn 1.6s var(--ease-precise) 1.4s 1 both; }
+}
+
+@keyframes sway-a {
+  0% { transform: rotate(0deg); }
+  22% { transform: rotate(-5deg); }
+  48% { transform: rotate(3.5deg); }
+  72% { transform: rotate(-1.5deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes sway-a-again {
+  0% { transform: rotate(0deg); }
+  22% { transform: rotate(-5deg); }
+  48% { transform: rotate(3.5deg); }
+  72% { transform: rotate(-1.5deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes sway-b {
+  0% { transform: rotate(0deg); }
+  22% { transform: rotate(4deg); }
+  48% { transform: rotate(-3deg); }
+  72% { transform: rotate(1.2deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes sway-b-again {
+  0% { transform: rotate(0deg); }
+  22% { transform: rotate(4deg); }
+  48% { transform: rotate(-3deg); }
+  72% { transform: rotate(1.2deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes wink {
+  0%, 100% { transform: scaleY(1); }
+  35%, 62% { transform: scaleY(0.04); }
+}
+@keyframes wink-again {
+  0%, 100% { transform: scaleY(1); }
+  35%, 62% { transform: scaleY(0.04); }
+}
+@keyframes quarter-turn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}
+
+/* Cristina's handwritten sign-off under her tagline in the hero: the same
+   hand as the headline's "fun!", small, quiet and a touch tilted. */
+.signature {
+  font-family: var(--font-fun), cursive;
+  font-size: 1.27rem;
+  line-height: 1;
+  color: var(--color-slate);
+  transform: rotate(-4deg);
+  /* Gochi Hand has one weight; a hairline stroke in the page color shaves
+     the letters down to a finer pen line. */
+  -webkit-text-stroke: 0.75px var(--color-bone);
+}
+/* Gochi's capital C is lowercase height, so the first letter is scaled up
+   to read as a capital. Scaling it also thickens its pen line, so it gets a
+   heavier shave to match the rest of the name. */
+.signature-cap {
+  font-size: 1.4em;
+  -webkit-text-stroke-width: 1.4px;
+  /* and nudged down so it sits on the same baseline as "ristina" */
+  position: relative;
+  top: 0.08em;
+}
+
+/* "Why it works" rows: the old way is crossed out with the same tapered rust
+   line as the hero's "scary", drawn left to right as the card scrolls into
+   view, one row after another. The closing line's highlighter waits for the
+   card too. Reduced motion: both are simply there. */
+/* Drawn as a background on the inline text (not a pseudo-element), so when a
+   line wraps on smaller screens every line gets its own cross-out. */
+.strike {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 380 10' preserveAspectRatio='none'%3E%3Cpath fill='%23a4501f' d='M3 2 C100 1.6 250 0.6 377 0 Q380 0 380 2.5 L380 7.5 Q380 10 377 10 C250 9.4 100 8.4 3 8 Q0 8 0 6 L0 4 Q0 2 3 2 Z'/%3E%3C/svg%3E") no-repeat 0 58% / 100% 0.13em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.1em;
+  margin: 0 -0.1em;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .strike {
+    background-size: 0% 0.13em;
+    transition: background-size 520ms var(--ease-precise);
+    transition-delay: calc(450ms + var(--row, 0) * 700ms);
+  }
+  .is-visible .strike {
+    background-size: 100% 0.13em;
+  }
+  [data-reveal]:not(.is-visible) .swap-card .scribble::after {
+    animation-play-state: paused;
+  }
+  .swap-card .scribble::after {
+    animation-delay: 2.9s;
+  }
+}
+/* In body text the highlighter sits higher and a touch taller than in the
+   hero (lowercase letters are short), so it shows behind the word itself. */
+.swap-card .scribble::after {
+  bottom: 0.34em;
+  height: 0.6em;
+}
+
+/* "Working with me" checks: a bone circle (round, like the rest of the
+   site), rust border and check, ringed in the primary button's hover colors
+   (orange, sand, seafoam). The check draws in right after the same row's
+   cross-out, so each row reads cross out, check; then the rings breathe
+   softly, each row a beat apart. Ring widths are typed so they can animate. */
+@property --cb-1 { syntax: "<length>"; inherits: false; initial-value: 1.5px; }
+@property --cb-2 { syntax: "<length>"; inherits: false; initial-value: 3px; }
+@property --cb-3 { syntax: "<length>"; inherits: false; initial-value: 4.5px; }
+.check-box {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1.05em;
+  height: 1.05em;
+  margin: 0 0.15em;
+  border: 1.5px solid var(--color-signal);
+  border-radius: 50%;
+  background: var(--color-bone);
+  box-shadow: 0 0 0 var(--cb-1) var(--color-orange), 0 0 0 var(--cb-2) var(--color-sand), 0 0 0 var(--cb-3) var(--color-seafoam);
+}
+.check-box svg {
+  width: 100%;
+  height: 100%;
+}
+.check-box path {
+  fill: none;
+  stroke: var(--color-signal);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@keyframes check-breathe {
+  0%, 100% { --cb-1: 1.5px; --cb-2: 3px; --cb-3: 4.5px; }
+  50% { --cb-1: 2px; --cb-2: 4px; --cb-3: 6.5px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .check-box path {
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 360ms var(--ease-precise);
+    transition-delay: calc(980ms + var(--row, 0) * 700ms);
+  }
+  .is-visible .check-box path {
+    stroke-dashoffset: 0;
+  }
+  .is-visible .check-box {
+    animation: check-breathe 2.8s ease-in-out infinite;
+    animation-delay: calc(1340ms + var(--row, 0) * 700ms);
+  }
+}
+
+/* 4 Cs timeline draws itself: segments extend one after another, each
+   circle pops in as the line reaches it, and 04 breathes once it's landed.
+   Timings come in as custom properties from FourCs.tsx. Default (no
+   .is-visible) is the finished line. The line runs into each circle, so
+   circle and line touch. The pulse is a soft, slow blush halo. */
+@keyframes cs-draw {
+  from { transform: scaleX(0); }
+}
+@keyframes cs-dot-in {
+  from { opacity: 0; transform: scale(0.4); }
+}
+@keyframes cs-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-blush) 32%, transparent);
+  }
+  60% {
+    box-shadow: 0 0 0 16px color-mix(in srgb, var(--color-blush) 0%, transparent);
+  }
+}
+[data-reveal].is-visible .cs-seg {
+  transform-origin: left;
+  animation: cs-draw var(--draw, 520ms) var(--ease-precise) both;
+  animation-delay: var(--draw-delay, 0ms);
+}
+[data-reveal].is-visible .cs-dot {
+  animation: cs-dot-in 300ms var(--ease-precise) both;
+  animation-delay: var(--dot-delay, 0ms);
+}
+[data-reveal].is-visible .cs-dot--last {
+  animation:
+    cs-dot-in 300ms var(--ease-precise) var(--dot-delay, 0ms) both,
+    cs-pulse 4.2s ease-in-out var(--pulse-delay, 0ms) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal].is-visible .cs-seg,
+  [data-reveal].is-visible .cs-dot,
+  [data-reveal].is-visible .cs-dot--last {
+    animation: none;
+  }
+}
+
+/* The photo slider's frame: three thin rings in the lens colors, the same
+   order as the primary button's hover (orange, sand, seafoam). */
+.photo-rings {
+  box-shadow: 0 0 0 3px var(--color-orange), 0 0 0 6px var(--color-sand), 0 0 0 9px var(--color-seafoam);
+}
+
+/* The network hub: Cristina's portrait in a bone circle ringed in the lens
+   colors, with lines drawing out from her to each role card. Lines are
+   finished by default (no JS, reduced motion) and draw in under .is-visible. */
+.network-hub {
+  box-shadow: 0 0 0 3px var(--color-orange), 0 0 0 6px var(--color-sand), 0 0 0 9px var(--color-seafoam);
+}
+.hub-line {
+  fill: none;
+  stroke: color-mix(in srgb, var(--color-line-dark) 55%, transparent);
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] .hub-line {
+    stroke-dashoffset: 1;
+  }
+  [data-reveal].is-visible .hub-line {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 700ms var(--ease-precise) var(--line-delay, 300ms);
+  }
+}
+
+/* ── Sticky header ─────────────────────────────────────────────────────────
+   Full header at the top of the page; once it scrolls (data-scrolled, set by
+   HeaderScroll.tsx) it tightens to a slim bar: less padding, a smaller mark
+   and name, CREATIVE folded away, a soft shadow. The frosted background sits
+   on a pseudo-element, not the header, because backdrop-filter on the header
+   itself would trap the mobile menu's fixed overlay inside it. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--color-bone) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.site-header nav {
+  padding-block: 1rem;
+}
+.site-header .wm-sub {
+  max-height: 1rem;
+  overflow: hidden;
+}
+.site-header[data-scrolled] {
+  box-shadow: 0 1px 12px -6px color-mix(in srgb, var(--color-ink) 35%, transparent);
+}
+.site-header[data-scrolled] nav {
+  padding-block: 0.6rem;
+}
+.site-header[data-scrolled] .header-lens {
+  width: 2.1rem;
+  translate: 0 0;
+}
+.site-header[data-scrolled] .wm-name {
+  font-size: 1.45rem;
+}
+.site-header[data-scrolled] .wm-sub {
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+}
+.site-header[data-scrolled] .btn-primary {
+  padding: 0.5rem 1.1rem 0.42rem;
+}
+/* The compact bar can't fit the full 9px rings, so the sticky button's hover rings scale down. */
+.site-header[data-scrolled] .btn-primary:hover {
+  --ring-w1: 2px;
+  --ring-w2: 4px;
+  --ring-w3: 6px;
+}
+.site-header[data-scrolled] .btn-primary:active {
+  --ring-w3: 4px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .site-header,
+  .site-header nav,
+  .site-header .header-lens,
+  .site-header .wm-name,
+  .site-header .wm-sub,
+  .site-header .btn-primary {
+    transition-property: padding, width, translate, font-size, max-height, margin, opacity, box-shadow, background-color;
+    transition-duration: 260ms;
+    transition-timing-function: var(--ease-precise);
+  }
+}
+
+/* Tooltip bubble (Term.tsx): the footer's 70s stripe across its top edge. */
+.term-bubble::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6px;
+  border-radius: 0.75rem 0.75rem 0 0;
+  background: linear-gradient(
+    var(--color-orange) 0 2px,
+    var(--color-sand) 2px 4px,
+    var(--color-seafoam) 4px 6px
+  );
 }

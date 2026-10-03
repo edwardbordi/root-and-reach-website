@@ -44,24 +44,25 @@ export default function BlogArchive({ page }: { page: number }) {
             {/* section header — same eyebrow → heading → lede rhythm as the site */}
             <div className="max-w-3xl">
               <Reveal>
-                <Eyebrow tone="signal">Writing</Eyebrow>
+                <Eyebrow tone="signal">The blog</Eyebrow>
               </Reveal>
               <Reveal delay={80}>
-                <h1 className="font-display mt-6 text-pretty text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl">
-                  Notes from the build.
+                <h1 className="font-display mt-6 text-balance text-5xl leading-[0.98] text-ink sm:text-7xl">
+                  Notes from set.
                 </h1>
               </Reveal>
               <Reveal delay={160}>
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate">
-                  Essays on AI, systems, and owning what you build — written from
-                  the work, not the sidelines.
+                <p className="wrap-balance mt-6 max-w-2xl text-lg leading-relaxed text-slate">
+                  How to look (and feel) like yourself on camera, content ideas you can
+                  steal for your business, and stories from real shoots with real small
+                  businesses.
                 </p>
               </Reveal>
             </div>
 
             {cards.length === 0 ? (
               <p className="font-mono-label mt-16 text-sm text-slate">
-                No posts yet — check back soon.
+                Nothing here yet. The first post is in the works.
               </p>
             ) : (
               <BlogFilter posts={cards} />

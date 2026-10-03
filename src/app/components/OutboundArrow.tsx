@@ -6,7 +6,7 @@
  *
  * Decorative (aria-hidden); inherits the link's color via currentColor. Sized in
  * `em` so it stays a bit larger than the link's text without changing the text
- * size. Vertical centering relies on the enclosing link being a flex row with
+ * size. Nudged up 0.1em because Josefin's caps sit above the box center, so a box-centered arrow reads low. Vertical centering otherwise relies on the enclosing link being a flex row with
  * `items-center`. On hover of the enclosing `group` link it lifts up-and-right,
  * gated behind `motion-safe` so it's disabled under reduced motion.
  */
@@ -20,7 +20,7 @@ export default function OutboundArrow() {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="ml-0.5 h-[1.3em] w-[1.3em] shrink-0 transition-transform duration-150 ease-out motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
+      className="relative -top-[0.1em] ml-0.5 h-[1.3em] w-[1.3em] shrink-0 transition-transform duration-150 ease-out motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
     >
       <path d="M7 17 17 7" />
       <path d="M7 7h10v10" />

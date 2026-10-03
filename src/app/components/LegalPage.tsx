@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -8,17 +9,33 @@ export type LegalBlock =
   | { type: "ul"; items: string[] }
   | { type: "contact"; name: string; lines: string[] };
 
-// Inline renderer: supports **bold** spans. Bare domains/URLs are left as plain
-// text, matching the source markdown (which does not auto-link them).
+// Bare domains/URLs are left as plain text (not auto-linked); write
+// [text](/path) for a real link.
+/** Inline formatting for legal copy: **bold** and [link text](/path).
+ *  Internal paths use next/link; anything else opens as a normal link. */
 function renderInline(text: string, keyBase: string): ReactNode[] {
   const out: ReactNode[] = [];
-  const boldRe = /\*\*(.+?)\*\*/g;
+  const re = /\*\*(.+?)\*\*|\[([^\]]+)\]\(([^)\s]+)\)/g;
   let last = 0;
   let i = 0;
   let m: RegExpExecArray | null;
-  while ((m = boldRe.exec(text)) !== null) {
+  while ((m = re.exec(text)) !== null) {
     if (m.index > last) out.push(text.slice(last, m.index));
-    out.push(<strong key={`${keyBase}-b${i}`}>{m[1]}</strong>);
+    if (m[1] !== undefined) {
+      out.push(<strong key={`${keyBase}-b${i}`}>{m[1]}</strong>);
+    } else if (m[3].startsWith("/")) {
+      out.push(
+        <Link key={`${keyBase}-l${i}`} href={m[3]} className="text-signal underline underline-offset-4 hover:text-signal-strong">
+          {m[2]}
+        </Link>,
+      );
+    } else {
+      out.push(
+        <a key={`${keyBase}-l${i}`} href={m[3]} className="text-signal underline underline-offset-4 hover:text-signal-strong">
+          {m[2]}
+        </a>,
+      );
+    }
     last = m.index + m[0].length;
     i++;
   }

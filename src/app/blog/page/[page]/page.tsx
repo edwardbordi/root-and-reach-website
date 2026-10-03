@@ -49,10 +49,10 @@ export async function generateMetadata({
   if (page === null || page < 2 || page > totalBlogPages()) return {};
 
   return buildPageMetadata({
-    title: `Writing — page ${page} — ${SITE_NAME}`,
-    description: `Page ${page} of articles and notes from ${SITE_NAME}.`,
+    title: `Notes from set, page ${page} — ${SITE_NAME}`,
+    description: `Page ${page} of on-camera tips, content ideas and stories from real shoots, from Cristina Vann of Root & Reach Creative.`,
     path: `/blog/page/${page}`,
-    focusKeyword: "blog",
+    focusKeyword: "content tips for small businesses",
   });
 }
 

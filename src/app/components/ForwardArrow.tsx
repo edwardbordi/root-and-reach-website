@@ -5,7 +5,7 @@
  * OutboundArrow (diagonal ↗) for external links.
  *
  * Decorative (aria-hidden); inherits color via currentColor. Sized in `em` so it
- * stays a bit larger than the link text. Vertical centering relies on the
+ * stays a bit larger than the link text. Nudged up 0.1em because Josefin's caps sit above the box center, so a box-centered arrow reads low. Vertical centering otherwise relies on the
  * enclosing link being a flex row with `items-center`. On hover of the enclosing
  * `group` link it nudges right, gated behind `motion-safe`. Spacing is handled by
  * the parent's `gap-*` (no margin here).
@@ -20,7 +20,7 @@ export default function ForwardArrow() {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-[1.3em] w-[1.3em] shrink-0 transition-transform duration-200 ease-out motion-safe:group-hover:translate-x-1"
+      className="relative -top-[0.1em] h-[1.3em] w-[1.3em] shrink-0 transition-transform duration-200 ease-out motion-safe:group-hover:translate-x-1"
     >
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />

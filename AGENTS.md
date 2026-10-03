@@ -187,6 +187,21 @@ theme tokens in `src/app/globals.css`, the components, and the pages. Swap the i
 `/public`. Studio picks up `SITE_NAME` and `/public/logos/favicon.svg` automatically; the owner can
 override both from Settings → Business once signed in.
 
+## Arrow system
+
+**Use dedicated components for all arrows.** Never type arrow glyphs directly in markup or copy.
+(Same rule as realiiz.com.)
+
+- **Internal links** use `ForwardArrow` (straight →) for navigation within the site; it nudges
+  right on hover. `BackArrow` is its mirror for "return" links.
+- **External links** use `OutboundArrow` (diagonal ↗) for anything leaving the domain, including
+  her social profiles; it lifts up-and-right on hover.
+- **Literal arrow glyphs** (`→`, `↗`, etc.) are never typed directly — they render inconsistently
+  and lose the link semantics.
+
+The enclosing link must be a `group` and a flex row with `items-center`; the arrows inherit the
+link's color, size in `em`, and their hover motion is `motion-safe` only.
+
 ## Verify before you open a PR (the checks CI runs)
 
 ```

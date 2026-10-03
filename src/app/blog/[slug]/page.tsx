@@ -136,10 +136,10 @@ export default async function BlogPostPage({
     mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
   };
 
-  // Breadcrumb structured data (schema only — the visible design keeps its "All writing" back-link).
+  // Breadcrumb structured data (schema only — the visible design keeps its "All posts" back-link).
   const breadcrumb = breadcrumbJsonLd([
     { name: "Home", path: "/" },
-    { name: "Writing", path: "/blog" },
+    { name: "Blog", path: "/blog" },
     { name: frontmatter.title, path: `/blog/${slug}` },
   ]);
 
@@ -160,13 +160,13 @@ export default async function BlogPostPage({
               className="group font-mono-label inline-flex items-center gap-2 text-sm text-slate transition-colors hover:text-ink"
             >
               <BackArrow />
-              All writing
+              All posts
             </Link>
           </Reveal>
 
           <header className="mt-8 border-b border-line pb-10">
             <Reveal>
-              <Eyebrow tone="signal">Writing</Eyebrow>
+              <Eyebrow tone="signal">Notes from set</Eyebrow>
             </Reveal>
             <Reveal delay={80}>
               <h1 className="font-display mt-5 text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl">
