@@ -79,7 +79,7 @@ export default function Hero({
           )}
         </div>
 
-        <Reveal eager delay={200} className="md:col-start-1 md:row-start-2 md:self-center">
+        <Reveal eager delay={200} className="relative z-20 md:col-start-1 md:row-start-2 md:self-center">
           <div className="flex flex-wrap items-center gap-3">
             <Link href={ctaHref} className="btn-primary group">
               {ctaLabel}
