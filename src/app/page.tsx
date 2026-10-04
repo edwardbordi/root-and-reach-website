@@ -10,13 +10,11 @@ export const metadata = buildPageMetadata({
   focusKeyword: "content creation for small business",
 });
 
-/* Home: the animated version (looping portrait, "can be ~~scary~~ fun.").
+/* Home: the animated version (looping portrait). Both versions share the
+   headline "Being on camera can be ~~scary~~ fun." (HomePage default).
    The original still-portrait version lives at /still for comparison. */
 export default function Home() {
   return (
-    <HomePage
-      portrait={<AnimatedPortrait />}
-      title={{ lead: "Being on camera can be", highlight: "scary", swap: "fun.", auto: true }}
-    />
+    <HomePage portrait={<AnimatedPortrait />} />
   );
 }

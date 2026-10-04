@@ -1,8 +1,7 @@
 import HomePage from "../components/HomePage";
 import { buildPageMetadata } from "../../lib/seo";
 
-/* TEMPORARY — the original still-portrait home page ("doesn't have to be
-   scary." with the hover swap), kept for comparison in the preview's version
+/* TEMPORARY — the still-portrait home page, kept for comparison in the preview's version
    switch. noindex, canonical "/"; delete this route once Cristina signs off. */
 export const metadata = buildPageMetadata({
   title: "Root & Reach Creative — Content for Small Businesses, Made Easy",
