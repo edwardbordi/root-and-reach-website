@@ -69,11 +69,11 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
               Content creation<span className="hidden sm:inline"> for small businesses</span>
             </>
           }
-          titleLead={title?.lead ?? "Being on camera doesn't have to be"}
-          titleHighlight={title?.highlight ?? "scary."}
-          titleSwap={title ? title.swap : "fun!"}
-          titleSwapNote={title ? title.swapNote : "should be"}
-          titleSwapAuto={title?.auto}
+          titleLead={title?.lead ?? "Being on camera can be"}
+          titleHighlight={title?.highlight ?? "scary"}
+          titleSwap={title ? title.swap : "fun."}
+          titleSwapNote={title?.swapNote}
+          titleSwapAuto={title ? title.auto : true}
           subtitle={
             <>
               I&apos;m Cristina, a <Term definition={GLOSSARY.creativePartner}>creative partner</Term> for small
