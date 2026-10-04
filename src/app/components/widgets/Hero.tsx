@@ -22,6 +22,8 @@ export interface HeroProps {
   titleSwap?: string;
   /** Small handwritten note above the swap word. */
   titleSwapNote?: string;
+  /** Play the swap once on load instead of on hover (shows on phones too). */
+  titleSwapAuto?: boolean;
   subtitle?: React.ReactNode;
   tagline?: string;
   /** Handwritten sign-off under the tagline (her first name). */
@@ -30,6 +32,8 @@ export interface HeroProps {
   ctaHref: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  /** Replaces the still portrait (the animated home version passes a looping video). */
+  portrait?: React.ReactNode;
 }
 
 export default function Hero({
@@ -40,9 +44,11 @@ export default function Hero({
   titleTail,
   titleSwap,
   titleSwapNote,
+  titleSwapAuto,
   subtitle,
   tagline,
   taglineSign,
+  portrait,
   ctaLabel,
   ctaHref,
   secondaryLabel,
@@ -61,8 +67,8 @@ export default function Hero({
             </Reveal>
           )}
           <Reveal eager delay={80}>
-            <h1 className="swap-trigger font-display mt-6 w-fit text-balance text-[3.4rem] leading-[0.95] text-espresso sm:text-7xl lg:text-[5.6rem]">
-              {titleLead} <Scribble text={titleHighlight} swap={titleSwap} swapNote={titleSwapNote} />
+            <h1 className={`${titleSwapAuto ? "swap-auto" : "swap-trigger"} font-display mt-6 w-fit text-balance text-[3.4rem] leading-[0.95] text-espresso sm:text-7xl lg:text-[5.6rem]`}>
+              {titleLead} <Scribble text={titleHighlight} swap={titleSwap} swapNote={titleSwapNote} auto={titleSwapAuto} />
               {titleTail ? ` ${titleTail}` : null}
             </h1>
           </Reveal>
@@ -91,15 +97,17 @@ export default function Hero({
         {/* Her portrait, with a soft fill cut to the shape of her face baked
             into the image (cristina-portrait-face.webp) so her colors lead. */}
         <Reveal eager delay={120} className="relative mx-auto w-full max-w-[26rem] md:col-start-2 md:row-start-1 md:self-center">
-          <Image
-            src="/logos/cristina-portrait-face.webp"
-            alt="Line drawing of Cristina Vann in black glasses, one lens filled with a 70s swirl, flowers in her hair"
-            width={900}
-            height={900}
-            priority
-            sizes="(min-width: 768px) 26rem, 80vw"
-            className="h-auto w-full"
-          />
+          {portrait ?? (
+            <Image
+              src="/logos/cristina-portrait-face.webp"
+              alt="Line drawing of Cristina Vann in black glasses, one lens filled with a 70s swirl, flowers in her hair"
+              width={900}
+              height={900}
+              priority
+              sizes="(min-width: 768px) 26rem, 80vw"
+              className="h-auto w-full"
+            />
+          )}
         </Reveal>
 
         {/* Her own line, signed under her portrait like a caption, on the
@@ -108,7 +116,7 @@ export default function Hero({
           <Reveal eager delay={260} className="mx-auto w-full max-w-[26rem] md:col-start-2 md:row-start-2 md:self-center">
             <div className="pr-[26%] text-center">
               <div>
-                <p className="font-mono-label whitespace-pre-line text-[0.6rem] leading-relaxed text-slate">
+                <p className="font-mono-label translate-y-[1.5px] whitespace-pre-line text-[0.6rem] leading-relaxed text-slate">
                   {tagline.replace(/,\s*/, ",\n")}
                 </p>
                 {taglineSign && (

@@ -863,9 +863,11 @@ html[data-show-needs] [data-needs][data-needs-empty] {
 .x-fun {
   display: none;
 }
-@media (hover: hover) and (pointer: fine) {
+/* Styles apply everywhere; the pieces only SHOW on hover-capable pointers or
+   in .swap-auto headlines (the animated home version), where the swap plays
+   once on load and stays, phones included. */
+@media all {
   .x-arrow {
-    display: block;
     position: absolute;
     z-index: 2;
     left: -0.04em;
@@ -897,7 +899,6 @@ html[data-show-needs] [data-needs][data-needs-empty] {
     transform-origin: left center;
   }
   .x-fun {
-    display: block;
     position: absolute;
     left: calc(100% + 0.36em); /* after the period (~0.2em) */
     top: 50%;
@@ -927,6 +928,12 @@ html[data-show-needs] [data-needs][data-needs-empty] {
     line-height: 1;
     white-space: nowrap;
   }
+}
+@media (hover: hover) and (pointer: fine) {
+  .x-arrow,
+  .x-fun {
+    display: block;
+  }
   .swap-trigger:hover .x-arrow {
     clip-path: inset(-20% -2% -20% -2%);
     transition: clip-path 380ms var(--ease-precise) 0ms;
@@ -940,6 +947,33 @@ html[data-show-needs] [data-needs][data-needs-empty] {
   .x-arrow,
   .x-fun {
     transition: none !important;
+  }
+}
+/* Auto swap: strike SCARY, then write the swap word in, once, after the
+   headline has landed and the seafoam swipe has drawn. Stays put after. */
+.swap-auto .x-arrow,
+.swap-auto .x-fun {
+  display: block;
+}
+.swap-auto .x-arrow {
+  animation: x-strike 420ms var(--ease-precise) 1.5s both;
+}
+.swap-auto .x-fun {
+  animation: x-write 420ms var(--ease-precise) 1.95s both;
+}
+@keyframes x-strike {
+  from { clip-path: inset(-20% 102% -20% -2%); }
+  to { clip-path: inset(-20% -2% -20% -2%); }
+}
+@keyframes x-write {
+  from { clip-path: inset(-160% 105% -30% -5%); }
+  to { clip-path: inset(-160% -10% -30% -5%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .swap-auto .x-arrow,
+  .swap-auto .x-fun {
+    animation-duration: 1ms;
+    animation-delay: 0s;
   }
 }
 
@@ -1065,14 +1099,14 @@ html[data-show-needs] [data-needs][data-needs-empty] {
   transform: rotate(-4deg);
   /* Gochi Hand has one weight; a hairline stroke in the page color shaves
      the letters down to a finer pen line. */
-  -webkit-text-stroke: 0.75px var(--color-bone);
+  -webkit-text-stroke: 0.95px var(--color-bone);
 }
 /* Gochi's capital C is lowercase height, so the first letter is scaled up
    to read as a capital. Scaling it also thickens its pen line, so it gets a
    heavier shave to match the rest of the name. */
 .signature-cap {
   font-size: 1.4em;
-  -webkit-text-stroke-width: 1.4px;
+  -webkit-text-stroke-width: 1.75px;
   /* and nudged down so it sits on the same baseline as "ristina" */
   position: relative;
   top: 0.08em;
@@ -1300,18 +1334,15 @@ html[data-show-needs] [data-needs][data-needs-empty] {
   }
 }
 
-/* Tooltip bubble (Term.tsx): the footer's 70s stripe across its top edge. */
-.term-bubble::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 6px;
-  border-radius: 0.75rem 0.75rem 0 0;
-  background: linear-gradient(
-    var(--color-orange) 0 2px,
-    var(--color-sand) 2px 4px,
-    var(--color-seafoam) 4px 6px
-  );
+/* Tooltip bubble (Term.tsx). */
+.term-bubble {
+  /* The site's three-band border (orange, sand, seafoam) all the way round,
+     drawn as stacked rings so it follows the rounded corners. The outer
+     seafoam band is twice as thick as the other two. Static, no pulse. */
+  box-shadow:
+    0 0 0 2px var(--color-orange),
+    0 0 0 4px var(--color-sand),
+    0 0 0 8px var(--color-seafoam),
+    0 14px 30px -12px color-mix(in srgb, var(--color-ink) 45%, transparent);
 }
+

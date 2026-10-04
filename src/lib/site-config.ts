@@ -64,7 +64,10 @@ export const PREVIEW_QR_URL: string = "https://link.sendlink.co/qr/MyFRHmFo6xH_"
  * Home-page versions to offer the reviewer, when a build is showing more than
  * one. Empty hides the switch entirely. Each `href` needs a real route.
  */
-export const PREVIEW_VARIANTS: { href: string; label: string }[] = [];
+export const PREVIEW_VARIANTS: { href: string; label: string }[] = [
+  { href: "/", label: "Animated portrait" },
+  { href: "/still", label: "Still portrait" },
+];
 
 /** Last PageSpeed Insights snapshot, filled in by hand after a run. */
 export const PREVIEW_SCORES = {

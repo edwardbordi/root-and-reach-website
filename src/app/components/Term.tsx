@@ -10,6 +10,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import type { ReactNode } from "react";
+import { keepLastWords } from "../../lib/text";
 
 /**
  * Inline jargon term with a plain-English definition shown in a tooltip.
@@ -46,8 +47,8 @@ import type { ReactNode } from "react";
  */
 
 const WIDTH = 272; // px — fixed bubble width for predictable positioning
-const GAP = 8; // px — space between the term and the bubble
-const MARGIN = 8; // px — keep the bubble this far from the viewport edges
+const GAP = 14; // px — space between the term and the bubble (clears the 8px color rings)
+const MARGIN = 14; // px — keep the bubble (and its 8px rings) this far from the viewport edges
 
 type Pos = {
   top: number;
@@ -247,21 +248,13 @@ export default function Term({
           <div
             ref={tipRef}
             aria-hidden="true"
-            className={`term-bubble pointer-events-none fixed z-1000 overflow-visible rounded-xl border border-white/15 bg-espresso px-5 pb-4 pt-5 text-left text-sm font-normal leading-relaxed text-bone shadow-lg transition-opacity duration-150 ${
+            className={`term-bubble pointer-events-none fixed z-1000 overflow-visible rounded-xl bg-espresso px-5 py-4 text-left text-sm font-normal leading-relaxed text-bone transition-opacity duration-150 ${
               ready ? "opacity-100" : "opacity-0"
             }`}
             style={{ top: pos.top, left: pos.left, width: pos.width }}
           >
-            <span
-              aria-hidden="true"
-              className="absolute h-2 w-2 rotate-45 rounded-xs bg-espresso"
-              style={{
-                left: pos.caretLeft,
-                marginLeft: -4,
-                ...(pos.placement === "below" ? { top: -4 } : { bottom: -4 }),
-              }}
-            />
-            {definition}
+            {/* No lonely last words: balanced lines, and the last three words kept together for browsers that don't balance. */}
+            <span className="wrap-balance block">{keepLastWords(definition)}</span>
           </div>,
           // Portal into a themed scope element when one exists
           // (a .theme-dark class there flips the ink/bone vars, so the bubble
