@@ -12,7 +12,10 @@ export default function Scribble({
   text,
   swap,
   swapNote,
+  auto,
 }: {
+  /** The swap plays once on load and stays (the headline then reads as the swap). */
+  auto?: boolean;
   text: string;
   swap?: string;
   /** Small handwritten words above the swap, so the sentence still reads right
@@ -25,11 +28,11 @@ export default function Scribble({
   return (
     <>
       <span className="scribble">
-        {word}
+        {auto && swap ? <span aria-hidden="true">{word}</span> : word}
         {swap && (
           <>
             <span className="x-arrow" aria-hidden="true" />
-            <span className="x-fun" aria-hidden="true">
+            <span className="x-fun" aria-hidden={auto ? undefined : true}>
               {swapNote && <span className="x-note">{swapNote}</span>}
               {swap}
             </span>
