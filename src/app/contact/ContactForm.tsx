@@ -309,7 +309,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="contact-website" className={LABEL}>
-            Website <span className="text-slate/60 normal-case tracking-normal">(optional)</span>
+            Website <span className="text-slate normal-case tracking-normal">(optional)</span>
           </label>
           <div className="relative">
             <input
@@ -356,7 +356,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label htmlFor="contact-social" className={LABEL}>
-            Social media <span className="text-slate/60 normal-case tracking-normal">(optional)</span>
+            Social media <span className="text-slate normal-case tracking-normal">(optional)</span>
           </label>
           <SocialTags id="contact-social" tags={socials} onChange={setSocials} pending={socialDraft} onPendingChange={setSocialDraft} maxLength={LIMITS.social} />
         </div>

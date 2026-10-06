@@ -45,7 +45,7 @@ function FilterChip({
       }`}
     >
       {label}
-      <span className={active ? "text-signal/60" : "text-slate/40"}>{count}</span>
+      <span className={active ? "text-signal" : "text-slate"}>{count}</span>
     </button>
   );
 }
@@ -103,7 +103,7 @@ function PostCard({
             <span className="whitespace-nowrap">{post.dateLabel}</span>{" "}
             <span className="whitespace-nowrap">· {post.readMinutes} min</span>
           </span>
-          <span className="font-mono-label shrink-0 text-xs text-slate/40">
+          <span className="font-mono-label shrink-0 text-xs text-slate">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
@@ -121,7 +121,7 @@ function PostCard({
         {post.tags.length > 0 && (
           <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1.5">
             {post.tags.map((tag) => (
-              <span key={tag} className="font-mono-label text-xs text-slate/60">
+              <span key={tag} className="font-mono-label text-xs text-slate">
                 #{tag}
               </span>
             ))}

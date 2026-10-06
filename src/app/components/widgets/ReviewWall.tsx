@@ -96,7 +96,7 @@ export default function ReviewWall({
                 onClick={() => setTheme(on ? null : t.id)}
                 className={`${chip} ${on ? chipOn : chipOff}`}
               >
-                {t.label} <span className={on ? "text-bone/60" : "text-ink/50"}>{n}</span>
+                {t.label} <span className={on ? "text-bone/85" : "text-ink/75"}>{n}</span>
               </button>
             );
           })}
@@ -129,7 +129,7 @@ export default function ReviewWall({
                       <blockquote className={`mt-4 leading-relaxed text-ink ${r.quote.length <= 230 ? "wrap-balance" : ""}`}>“{r.quote.length <= 230 ? r.quote : keepLastWords(r.quote)}”</blockquote>
                       <figcaption className="font-mono-label mt-5 text-[0.68rem] text-slate">
                         {r.name}
-                        {r.role ? <span className="text-slate/80"> · {r.role}</span> : null}
+                        {r.role ? <span className="text-slate"> · {r.role}</span> : null}
                       </figcaption>
                     </figure>
                   ))}
