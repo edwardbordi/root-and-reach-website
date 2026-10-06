@@ -195,7 +195,7 @@ export default function SocialTags({
           </button>
         )}
       </div>
-      <p id={`${id}-hint`} className="mt-1.5 text-[0.8rem] text-slate/80">
+      <p id={`${id}-hint`} className="mt-1.5 text-[0.8rem] text-slate">
         Press Enter to add more than one.
       </p>
 
@@ -286,7 +286,7 @@ function SocialRow({
           ) : found === false ? (
             <span className="text-[0.75rem] font-medium text-signal">Not found</span>
           ) : found === "checking" ? (
-            <span className="text-[0.72rem] text-slate/80">Checking…</span>
+            <span className="text-[0.72rem] text-slate">Checking…</span>
           ) : info.url && !info.problem && !info.typoHost ? (
             // Can't be checked from here (Instagram, Facebook, LinkedIn…), or the
             // check couldn't tell: let them look for themselves.

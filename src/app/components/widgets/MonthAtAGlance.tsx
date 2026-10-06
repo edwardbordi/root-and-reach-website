@@ -51,8 +51,7 @@ export default function MonthAtAGlance({ id, eyebrow, heading, items, note, phot
           <h2 className="font-display mt-5 text-balance text-5xl leading-[0.98] text-ink sm:text-6xl">{heading}</h2>
           <dl className="mt-10 flex flex-col">
             {items.map((it, i) => (
-              <Reveal key={it.title} delay={i * 60}>
-                <div className="grid gap-1 border-t border-line py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
+              <Reveal key={it.title} delay={i * 60} className="grid gap-1 border-t border-line py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
                   <dt className="font-mono-label whitespace-nowrap text-[0.78rem] text-signal-2">
                     {it.title}
                     {it.price && (
@@ -62,7 +61,6 @@ export default function MonthAtAGlance({ id, eyebrow, heading, items, note, phot
                     )}
                   </dt>
                   <dd className="wrap-balance leading-relaxed text-ink">{it.body}</dd>
-                </div>
               </Reveal>
             ))}
           </dl>
