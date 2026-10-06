@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import SocialLinks from "./SocialLinks";
 import { useEffect, useId, useRef, useState } from "react";
 import { NAV_LINKS } from "../../lib/site-config";
 
@@ -135,7 +136,11 @@ export default function MobileMenu() {
                 </Link>
               ))}
             </nav>
-            <div className="mt-4 flex gap-4 border-t border-line pt-4 font-mono-label text-xs text-slate">
+            <div className="mt-3 flex items-center justify-between gap-3 border-t border-line px-3 pt-3">
+              <span className="font-mono-label text-[0.7rem] text-slate">Follow along</span>
+              <SocialLinks className="gap-1" linkClassName="h-11 w-11 text-ink hover:bg-bone-2 hover:text-signal" iconClassName="h-5 w-5" />
+            </div>
+            <div className="mt-3 flex gap-4 border-t border-line pt-4 font-mono-label text-xs text-slate">
               <Link href="/privacy" onClick={() => setOpen(false)}>
                 Privacy
               </Link>

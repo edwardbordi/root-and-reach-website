@@ -32,6 +32,8 @@ export interface HeroProps {
   ctaHref: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  /** A small line under the buttons (the home page's "Follow along"). */
+  follow?: React.ReactNode;
   /** Replaces the still portrait (the animated home version passes a looping video). */
   portrait?: React.ReactNode;
 }
@@ -53,6 +55,7 @@ export default function Hero({
   ctaHref,
   secondaryLabel,
   secondaryHref,
+  follow,
 }: HeroProps) {
   // Two rows on desktop so the buttons and her tagline share one line:
   // row 1 = words | portrait, row 2 = buttons | tagline. On phones it stacks
@@ -93,6 +96,14 @@ export default function Hero({
             )}
           </div>
         </Reveal>
+
+        {/* Its own row under the buttons, so the buttons stay level with the
+            tagline beside them. */}
+        {follow && (
+          <Reveal eager delay={230} className="-mt-4 md:col-start-1 md:row-start-3 md:-mt-3">
+            {follow}
+          </Reveal>
+        )}
 
         {/* Her portrait, with a soft fill cut to the shape of her face baked
             into the image (cristina-portrait-face.webp) so her colors lead. */}

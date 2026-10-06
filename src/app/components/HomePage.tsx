@@ -13,6 +13,7 @@ import BookCallBand from "./widgets/BookCallBand";
 import SectionRail from "./SectionRail";
 import { webSiteJsonLd, serviceJsonLd } from "../../lib/seo";
 import { SOCIAL_LINKS } from "../../lib/site-config";
+import SocialLinks from "./SocialLinks";
 import { REVIEWS, REVIEW_THEMES, REVIEW_SNAPSHOT } from "../../lib/reviews";
 import Term from "./Term";
 import { GLOSSARY } from "../../lib/glossary";
@@ -97,6 +98,12 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
           secondaryLabel="How it works"
           secondaryHref="#four-cs"
           tagline="Strategy with style, content with heart."
+          follow={
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-slate">
+              <span className="font-mono-label text-[0.68rem]">Follow along</span>
+              <SocialLinks className="-ml-1 gap-0.5" linkClassName="h-9 w-9 hover:bg-bone-2 hover:text-signal" />
+            </div>
+          }
         />
 
         <ScaryToEasy
