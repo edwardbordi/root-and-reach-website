@@ -25,6 +25,9 @@ const redirects = async () => [
    * rather than a hop in the normal path.
    */
   { source: "/blog/page/1", destination: "/blog", permanent: true },
+  /** The booking calendar page was replaced by the Contact Cristina form
+   *  (2026-10-06). Old links and shares of /book land on the form. */
+  { source: "/book", destination: "/contact", permanent: true },
 ];
 
 /**

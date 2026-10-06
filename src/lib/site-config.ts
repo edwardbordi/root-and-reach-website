@@ -34,7 +34,7 @@ export const SITE_URL = "https://root-and-reach-website.vercel.app";
  * ------------------------------------------------------------------------- */
 
 /** The master switch. False ships the site with no review chrome at all. */
-export const PREVIEW_CHROME = true;
+export const PREVIEW_CHROME = false;
 
 /**
  * The walkthrough video: whoever built the site explaining what this preview is
@@ -64,10 +64,7 @@ export const PREVIEW_QR_URL: string = "https://link.sendlink.co/qr/MyFRHmFo6xH_"
  * Home-page versions to offer the reviewer, when a build is showing more than
  * one. Empty hides the switch entirely. Each `href` needs a real route.
  */
-export const PREVIEW_VARIANTS: { href: string; label: string }[] = [
-  { href: "/", label: "Animated portrait" },
-  { href: "/still", label: "Still portrait" },
-];
+export const PREVIEW_VARIANTS: { href: string; label: string }[] = [];
 
 /** Last PageSpeed Insights snapshot, filled in by hand after a run. */
 export const PREVIEW_SCORES = {
@@ -119,7 +116,7 @@ export const NAV_LINKS: { href: string; label: string }[] = [
   { href: "/#network", label: "The network" },
   { href: "/#story", label: "About" },
   { href: "/blog", label: "Blog" },
-  { href: "/book", label: "Book a call" },
+  { href: "/contact", label: "Contact Cristina" },
 ];
 
 /**
@@ -130,6 +127,3 @@ export const NAV_LINKS: { href: string; label: string }[] = [
  */
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 
-/** Cristina's HighLevel booking calendar ("Discovery Call with Cristina", 30 min),
- *  embedded on /book. Not a secret: it's the public widget ID. */
-export const BOOKING_CALENDAR_ID = "tfOdsZC17XafWKGNKiar";

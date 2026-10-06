@@ -13,7 +13,7 @@ export const metadata = buildPageMetadata({
 /* Based on realiiz.com's terms, rewritten for Root & Reach Creative Agency
    LLC (2026-10-03). Governing law assumes New Jersey (OPEN-ITEMS 20: confirm
    her LLC's home state). Contact comes from site-config.ts. */
-const HOW_TO_REACH = CONTACT_EMAIL ? CONTACT_EMAIL : "the contact options on our [Book a Call page](/book)";
+const HOW_TO_REACH = CONTACT_EMAIL ? CONTACT_EMAIL : "the form on our [Contact page](/contact)";
 
 const BLOCKS: LegalBlock[] = [
   { type: "h2", text: "Overview" },
@@ -29,7 +29,7 @@ const BLOCKS: LegalBlock[] = [
   { type: "h2", text: "1. Who We Are and What We Provide" },
   {
     type: "p",
-    text: `${SITE_NAME} creates photo and video content for small businesses, including planning, shoots, and editing, and brings in a network of creative partners (such as venues, models, videographers, and designers) when a project calls for it. The Site itself is informational: it describes our services, shares content, and lets visitors book a call or contact us. We do not sell products through the Site.`,
+    text: `${SITE_NAME} creates photo and video content for small businesses, including planning, shoots, and editing, and brings in a network of creative partners (such as venues, models, videographers, and designers) when a project calls for it. The Site itself is informational: it describes our services, shares content, and lets visitors contact us. We do not sell products through the Site.`,
   },
   {
     type: "p",
@@ -113,11 +113,11 @@ const BLOCKS: LegalBlock[] = [
   { type: "h2", text: "11. SMS / Text Messaging" },
   {
     type: "p",
-    text: `${SITE_NAME} may send appointment-related text messages, such as booking confirmations and reminders, to people who opt in when they book a call. This is not a marketing program; messages are sent only to people who have opted in.`,
+    text: `${SITE_NAME} may send text messages about an inquiry, such as replies, appointment confirmations and reminders, to people who opt in on our contact form. This is not a marketing program; messages are sent only to people who have opted in.`,
   },
   {
     type: "p",
-    text: "**Message frequency** varies with your bookings. **Message and data rates may apply.**",
+    text: "**Message frequency** varies. **Message and data rates may apply.**",
   },
   {
     type: "p",
@@ -131,5 +131,5 @@ const BLOCKS: LegalBlock[] = [
 ];
 
 export default function TermsPage() {
-  return <LegalPage eyebrow="Legal" title="Terms of Service" lastUpdated="October 3, 2026" blocks={BLOCKS} />;
+  return <LegalPage eyebrow="Legal" title="Terms of Service" lastUpdated="October 6, 2026" blocks={BLOCKS} />;
 }

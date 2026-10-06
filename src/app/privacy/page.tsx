@@ -16,18 +16,18 @@ export const metadata = buildPageMetadata({
    OPEN-ITEMS 2 and 7. */
 const HOW_TO_REACH = CONTACT_EMAIL
   ? `email ${CONTACT_EMAIL}`
-  : "use the contact options on our [Book a Call page](/book)";
+  : "use the form on our [Contact page](/contact)";
 
 const BLOCKS: LegalBlock[] = [
   {
     type: "p",
-    text: `${LEGAL_ENTITY} ("we," "us," "our"), doing business as ${SITE_NAME}, operates this website (the "Site"). This Privacy Policy explains what information we collect when you visit the Site, book a call or contact us, how we use it, and the choices you have.`,
+    text: `${LEGAL_ENTITY} ("we," "us," "our"), doing business as ${SITE_NAME}, operates this website (the "Site"). This Privacy Policy explains what information we collect when you visit the Site or contact us, how we use it, and the choices you have.`,
   },
 
   { type: "h2", text: "Information We Collect" },
   {
     type: "p",
-    text: "**Information you give us.** When you book a call, contact us, or otherwise communicate with us, we collect the information you provide: typically your name, email address, phone number, business name, and anything you tell us about your business or project.",
+    text: "**Information you give us.** When you fill in our contact form or otherwise communicate with us, we collect the information you provide: typically your name, email address, phone number, business name, website, social media handle, and anything you tell us about your business or project.",
   },
   {
     type: "p",
@@ -84,10 +84,10 @@ const BLOCKS: LegalBlock[] = [
     ],
   },
 
-  { type: "h2", text: "Booking and Scheduling" },
+  { type: "h2", text: "Our Contact Form" },
   {
     type: "p",
-    text: "Our booking calendar is provided by a third-party scheduling service (HighLevel / LeadConnector). When you book a call, the details you enter are processed by that service so we can schedule and confirm your appointment, under its own privacy policy.",
+    text: "When you send our contact form, the details you enter are stored in our customer relationship management system, provided by a third party (HighLevel / LeadConnector), so we can reply to you and keep track of our conversation. That service processes them under its own privacy policy.",
   },
 
   { type: "h2", text: "How We Share Information" },
@@ -135,7 +135,7 @@ const BLOCKS: LegalBlock[] = [
   { type: "h2", text: "SMS Messaging" },
   {
     type: "p",
-    text: "If you provide a phone number when booking and agree to receive texts, we use it only to send messages about your appointment, such as confirmations and reminders. This information is not sold, rented, or used for third-party marketing. You can opt out at any time by replying STOP, or reply HELP for help.",
+    text: "If you provide a phone number on our contact form and agree to receive texts, we use it only to send messages about your inquiry, such as replies, appointment confirmations and reminders. This information is not sold, rented, or used for third-party marketing. You can opt out at any time by replying STOP, or reply HELP for help.",
   },
   {
     type: "p",
@@ -154,5 +154,5 @@ const BLOCKS: LegalBlock[] = [
 ];
 
 export default function PrivacyPage() {
-  return <LegalPage eyebrow="Legal" title="Privacy Policy" lastUpdated="October 3, 2026" blocks={BLOCKS} />;
+  return <LegalPage eyebrow="Legal" title="Privacy Policy" lastUpdated="October 6, 2026" blocks={BLOCKS} />;
 }

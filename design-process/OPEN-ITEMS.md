@@ -53,7 +53,9 @@ min, ID in `site-config.ts`). Still open: email, phone, where she's based, wheth
 How people reach her: email, phone, a booking calendar, or a form. Also where she's based and
 whether she travels to clients.
 
-### 8. Does pricing go on the site?
+### 8. ✅ Decided 2026-10-06 (Ed) — pricing: a quiet "$400 per shoot" under "The shoot" in What you get; editing price left open
+
+_Original question:_ Does pricing go on the site?
 $400 per half-day shoot is confirmed (CLIENT-FACTS). Showing it filters for paid clients, which she
 wants; leaving it for the call is the alternative. Her decision.
 
@@ -126,3 +128,22 @@ Privacy and Terms were rebuilt from realiiz.com's (2026-10-03). Before launch:
 - **Legal entity:** Root & Reach Creative Agency LLC. 2026-10-02.
 - **Price:** $400 for a 4-hour half-day shoot, once a month per client; editing extra, approved first. 2026-10-02.
 - **Retro / 70s:** an idea to play with, not a decision. 2026-10-02.
+
+### 21. ✅ DONE 2026-10-06 — Book a Call replaced by the Contact Cristina form
+
+Ed's decision (2026-10-06), not started yet: swap the HighLevel booking calendar on
+`/book` for a simple form that emails and texts Cristina when someone fills it in.
+When it's built: remove `BookingEmbed` and `BOOKING_CALENDAR_ID`, decide where the
+form posts (likely a HighLevel inbound webhook whose workflow emails and texts her),
+and update the Privacy page's booking/HighLevel and SMS sections to match.
+The CTA changes with it: every "Book a call" button and link across the site
+(nav, hero, footer, Book a Call band, blog posts) becomes **"Contact Cristina"**,
+and it takes people to the form.
+Form fields: name, email, phone, business name, website, social media
+(handle or link), and one open question: "What are you looking for?"
+
+Built 2026-10-06: `/contact` (form) → `/api/contact` → GoHighLevel contact, tags
+`via-website` + `contact-enquiry` (+ `sms-consent-yes|no`), everything in one note.
+`/book` redirects to `/contact`. Still needed from Ed: `HIGHLEVEL_TOKEN`,
+`HIGHLEVEL_LOCATION_ID`, `LEAD_ALERT_WEBHOOK_URL` (CRM.md Steps 2–3, 6), and the
+workflow on `contact-enquiry` that emails + texts Cristina; then CRM.md Step 7.

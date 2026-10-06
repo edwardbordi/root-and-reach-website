@@ -10,6 +10,9 @@ import PhotoSlider, { type SlidePhoto } from "../PhotoSlider";
 export interface MonthItem {
   title: string;
   body: React.ReactNode;
+  /** A quiet price under the title (e.g. "$400 per shoot"). Not a pricing
+      table: only on items with a fixed price; the rest stay open. */
+  price?: string;
 }
 
 export interface MonthAtAGlanceProps {
@@ -50,7 +53,14 @@ export default function MonthAtAGlance({ id, eyebrow, heading, items, note, phot
             {items.map((it, i) => (
               <Reveal key={it.title} delay={i * 60}>
                 <div className="grid gap-1 border-t border-line py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
-                  <dt className="font-mono-label whitespace-nowrap text-[0.78rem] text-signal-2">{it.title}</dt>
+                  <dt className="font-mono-label whitespace-nowrap text-[0.78rem] text-signal-2">
+                    {it.title}
+                    {it.price && (
+                      <span className="mt-1.5 block text-[0.7rem] font-light tracking-[0.12em] text-slate normal-case">
+                        {it.price}
+                      </span>
+                    )}
+                  </dt>
                   <dd className="wrap-balance leading-relaxed text-ink">{it.body}</dd>
                 </div>
               </Reveal>
