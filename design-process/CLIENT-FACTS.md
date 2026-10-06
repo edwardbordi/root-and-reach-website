@@ -102,8 +102,9 @@ Facts the reviews add (all stated by reviewers):
   edited. The client decides what to do with it.
 - **Once a month per client**: they pay, she makes it easy, shoots the content, takes care of
   everything else, and repeats the next month.
-- **Editing into finished cuts ready to post is extra**: as little as $100 up to several hundred,
-  discussed, agreed and approved before she does it.
+- **Editing into finished cuts ready to post is extra**: **$100/hour** (Ed, 2026-10-06), so the
+  total varies with the effort: as little as $100 up to several hundred, discussed, agreed and
+  approved before she does it.
 - **Paid clients only.** She does not want to give a lot away for free.
 
 ## Business notes

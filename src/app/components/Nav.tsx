@@ -29,7 +29,7 @@ export function Wordmark({ tone = "ink" }: { tone?: "ink" | "bone" }) {
 
 /**
  * The site header. Links come from NAV_LINKS in lib/site-config.ts — one list
- * the desktop nav, the mobile menu and the footer all read. "Book a call" is
+ * the desktop nav, the mobile menu and the footer all read. "Contact Cristina" is
  * the one action, so it renders as the rust button.
  */
 export default function Nav() {
@@ -50,7 +50,7 @@ export default function Nav() {
         </Link>
         <div className="hidden items-center gap-7 whitespace-nowrap font-mono-label text-[0.8rem] text-slate lg:flex">
           {NAV_LINKS.map((l) =>
-            l.href === "/book" ? (
+            l.href === "/contact" ? (
               <Link key={l.href} href={l.href} className="btn-primary group">
                 {l.label}
                 <ForwardArrow />

@@ -1346,3 +1346,22 @@ html[data-show-needs] [data-needs][data-needs-empty] {
     0 14px 30px -12px color-mix(in srgb, var(--color-ink) 45%, transparent);
 }
 
+/* Form fields, when active: the same lens colors as the CTA rings, but
+   quiet. A warm orange-tinted border and one soft sand halo with a faint
+   seafoam edge, instead of a hard rust outline. A field in error keeps its
+   error border; only the halo is added. */
+.field-soft {
+  transition: border-color 160ms var(--ease-precise), box-shadow 160ms var(--ease-precise);
+}
+.field-soft:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--color-sand) 45%, transparent),
+    0 0 0 5px color-mix(in srgb, var(--color-seafoam) 30%, transparent);
+}
+.field-soft:focus:not([aria-invalid="true"]) {
+  border-color: color-mix(in srgb, var(--color-orange) 60%, var(--color-line));
+}
+@media (prefers-reduced-motion: reduce) {
+  .field-soft { transition: none; }
+}

@@ -20,11 +20,11 @@ const LEGAL_LINKS = [
 
 // The closing frame of every page. Premium by detail, not by adding stuff:
 // a 70s stripe in the lens colors where it starts, her mark beside the
-// wordmark (as in the header), labelled link columns, "Book a call" as the one real button,
+// wordmark (as in the header), labelled link columns, "Contact Cristina" as the one real button,
 // and a quiet way back to the top.
 export default function Footer() {
-  const bookLink = NAV_LINKS.find((l) => l.href === "/book");
-  const explore = NAV_LINKS.filter((l) => l.href !== "/book");
+  const bookLink = NAV_LINKS.find((l) => l.href === "/contact");
+  const explore = NAV_LINKS.filter((l) => l.href !== "/contact");
   return (
     <footer className="site-footer mt-auto bg-ink text-bone">
       {/* Orange, sand, seafoam: the same order as the button and photo rings. */}

@@ -35,10 +35,10 @@ test.describe('site smoke tests', () => {
     await expect(h1).not.toBeEmpty();
   });
 
-  test('homepage has a working booking CTA', async ({ page }) => {
+  test('homepage has a working Contact Cristina CTA', async ({ page }) => {
     await page.goto('/');
-    const bookingLink = page.locator('a[href="/book"]').first();
-    await expect(bookingLink).toBeVisible();
+    const contactLink = page.locator('a[href="/contact"]').first();
+    await expect(contactLink).toBeVisible();
   });
 
   test('primary navigation is present', async ({ page }) => {
@@ -48,10 +48,25 @@ test.describe('site smoke tests', () => {
     ).toBeVisible();
   });
 
-  test('booking page loads', async ({ page }) => {
-    const response = await page.goto('/book');
+  test('contact page loads with its form', async ({ page }) => {
+    const response = await page.goto('/contact');
     expect(response?.status()).toBeLessThan(400);
-    await expect(page.locator('body')).toBeVisible();
+    await expect(page.locator('form')).toBeVisible();
+    await expect(page.locator('#contact-email')).toBeVisible();
+  });
+
+  test('the old /book link lands on the contact page', async ({ page }) => {
+    await page.goto('/book');
+    await expect(page).toHaveURL(/\/contact$/);
+  });
+
+  test('the contact form checks fields before sending', async ({ page }) => {
+    await page.goto('/contact');
+    await page.locator('#contact-email').fill('not-an-email');
+    await page.locator('#contact-phone').fill('555');
+    await page.getByRole('button', { name: /send to cristina/i }).click();
+    await expect(page.locator('#err-email')).toBeVisible();
+    await expect(page.locator('#err-phone')).toBeVisible();
   });
 
   /* These tests check the machinery, not the sample content.

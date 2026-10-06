@@ -17,8 +17,8 @@ import { REVIEWS, REVIEW_THEMES, REVIEW_SNAPSHOT } from "../../lib/reviews";
 import Term from "./Term";
 import { GLOSSARY } from "../../lib/glossary";
 
-/* The home page body, shared by "/" (animated portrait) and "/still" (the
-   original still portrait) while Cristina compares them. Home — first draft, 2026-10-02.
+/* The home page body (rendered by app/page.tsx with the animated portrait;
+   Cristina picked it over the still and photo-grid versions, 2026-10-06). Home — first draft, 2026-10-02.
    Every claim traces to design-process/CLIENT-FACTS.md. Anything still owed
    by Cristina carries data-needs (OPEN-ITEMS 3–6), so the review kit's
    "Show what we still need" lists it. Pricing is deliberately absent until
@@ -40,10 +40,21 @@ const RAIL_SECTIONS = [
   { id: "network", label: "The network" },
   { id: "story", label: "My story" },
   { id: "follow", label: "Follow along" },
-  { id: "book", label: "Book a call" },
+  { id: "book", label: "Contact Cristina" },
 ];
 
 /** Headline override for a home version (the animated one says it positively). */
+/** Shoot photos for the What-you-get slider. */
+const WORK_PHOTOS = [
+            { src: "/work/two-women.webp", caption: "Real people, real joy", alt: "Two women laugh together over cocktails and dessert at an outdoor table." },
+            { src: "/work/feet.webp", caption: "Fun is the brand", alt: "Black-and-white photo of three women lying on a sofa with their legs up the wall in white socks." },
+            { src: "/work/traintracks.webp", caption: "The vibe, captured", alt: "A group of women in vintage-inspired autumn outfits sit together on railroad tracks." },
+            { src: "/work/steps.webp", caption: "Style with a story", alt: "Women in long skirts and hats pose on a rustic wooden staircase among fall trees." },
+            { src: "/work/bar.webp", caption: "Put a face to the place", alt: "A smiling bartender leans on a polished bar, bottles and glassware behind him." },
+            { src: "/work/art.webp", caption: "Show the experience", alt: "A live artist sketches a portrait of a woman posing in a purple-lit studio." },
+            { src: "/work/carusos.webp", caption: "Make them want to be there", alt: "Two cocktails and a candle on a table beside a restaurant menu." },
+          ];
+
 export type HeroTitle = { lead: string; highlight: string; swap?: string; swapNote?: string; auto?: boolean };
 
 export default function HomePage({ portrait, title }: { portrait?: React.ReactNode; title?: HeroTitle } = {}) {
@@ -78,11 +89,11 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
             <>
               I&apos;m Cristina, a <Term definition={GLOSSARY.creativePartner}>creative partner</Term> for small
               businesses. I take the part you&apos;ve been dreading and make it fun, comfortable and easy, then hand you
-              photos and video that look like you at your best.
+              photos and video that help your brand shine online.
             </>
           }
-          ctaLabel="Book a call"
-          ctaHref="/book"
+          ctaLabel="Contact Cristina"
+          ctaHref="/contact"
           secondaryLabel="How it works"
           secondaryHref="#four-cs"
           tagline="Strategy with style, content with heart."
@@ -157,6 +168,7 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
           items={[
             {
               title: "The shoot",
+              price: "$400 per shoot",
               body: (
                 <>
                   A <Term definition={GLOSSARY.halfDayShoot}>half-day, four-hour shoot</Term> each month, planned together
@@ -175,10 +187,12 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
             },
             {
               title: "Optional editing",
+              price: "$100 an hour",
               body: (
                 <>
-                  Want <Term definition={GLOSSARY.finishedCuts}>finished cuts</Term> ready to post? We agree on what&apos;s
-                  needed, and the price, before I start.
+                  Want <Term definition={GLOSSARY.finishedCuts}>finished cuts</Term> ready to post? The time it takes{" "}
+                  <Term definition={GLOSSARY.editingEffort}>depends on what you need</Term>, and we agree on it before I
+                  start.
                 </>
               ),
             },
@@ -195,21 +209,13 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
           ]}
           /* Preview set: Ed's picks from Cristina's Facebook, 2026-10-03.
              Captions say what each photo captures; swap freely. */
-          photos={[
-            { src: "/work/two-women.webp", caption: "Real people, real joy", alt: "Two women laugh together over cocktails and dessert at an outdoor table." },
-            { src: "/work/feet.webp", caption: "Fun is the brand", alt: "Black-and-white photo of three women lying on a sofa with their legs up the wall in white socks." },
-            { src: "/work/traintracks.webp", caption: "The vibe, captured", alt: "A group of women in vintage-inspired autumn outfits sit together on railroad tracks." },
-            { src: "/work/steps.webp", caption: "Style with a story", alt: "Women in long skirts and hats pose on a rustic wooden staircase among fall trees." },
-            { src: "/work/bar.webp", caption: "Put a face to the place", alt: "A smiling bartender leans on a polished bar, bottles and glassware behind him." },
-            { src: "/work/art.webp", caption: "Show the experience", alt: "A live artist sketches a portrait of a woman posing in a purple-lit studio." },
-            { src: "/work/carusos.webp", caption: "Make them want to be there", alt: "Two cocktails and a candle on a table beside a restaurant menu." },
-          ]}
+          photos={WORK_PHOTOS}
           photoNeeds={{
             label: "A photo from one of your shoots",
             detail: "Behind the scenes at a real client shoot, you and the client together if possible. Portrait orientation.",
           }}
-          ctaLabel="Book a call"
-          ctaHref="/book"
+          ctaLabel="Contact Cristina"
+          ctaHref="/contact"
         />
 
         <ReviewWall
@@ -254,7 +260,7 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
           eyebrow="Why small business"
           heading="Small business is in my blood."
           paragraphs={[
-            "My parents came from Italy with very little, before I was born, and both of them started small businesses. Scrappy survivors. I spent time in Italy as a little girl, and I've been back many times since.",
+            "My parents came from Italy with very little, before I was born, and they were small business owners. Gritty survivors. I spent time in Italy as a little girl, and I've been back many times since.",
             "That's where my heart for small business comes from. I love working with entrepreneurs who have an idea and the passion to chase it, people who are in it for more than the bottom line. Not big boxes. People.",
           ]}
           needs="Cristina to read and approve this in her own words, including how she wants to describe her time in Italy."
@@ -282,9 +288,9 @@ export default function HomePage({ portrait, title }: { portrait?: React.ReactNo
         <BookCallBand
           id="book"
           heading="Ready when you are."
-          body="Book a call and tell me about your business. No pressure and no script, just a conversation about what we could make together."
-          ctaLabel="Book a call"
-          ctaHref="/book"
+          body="Tell me about your business. No pressure and no script, just a conversation about what we could make together."
+          ctaLabel="Contact Cristina"
+          ctaHref="/contact"
         />
       </main>
       <Footer />
