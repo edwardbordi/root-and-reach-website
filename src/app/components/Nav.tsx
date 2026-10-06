@@ -4,6 +4,7 @@ import MobileMenu from "./MobileMenu";
 import LensSwirl from "./LensSwirl";
 import ForwardArrow from "./ForwardArrow";
 import HeaderScroll from "./HeaderScroll";
+import SocialLinks from "./SocialLinks";
 
 /** The wordmark: espresso ROOT & REACH in the site's headline face with a
  *  condensed Oswald ampersand in the same color, over a
@@ -51,10 +52,18 @@ export default function Nav() {
         <div className="hidden items-center gap-7 whitespace-nowrap font-mono-label text-[0.8rem] text-slate lg:flex">
           {NAV_LINKS.map((l) =>
             l.href === "/contact" ? (
-              <Link key={l.href} href={l.href} className="btn-primary group">
+              <span key={l.href} className="flex items-center gap-4">
+                {/* Her socials, one tap away on every page (xl+: below that the
+                    inline nav has no room, and the mobile menu carries them). */}
+                <SocialLinks
+                  className="hidden gap-0.5 border-l border-[color-mix(in_srgb,var(--color-line-dark)_30%,var(--color-bone))] pl-3 xl:flex"
+                  linkClassName="h-9 w-9 text-slate hover:bg-bone-2 hover:text-signal"
+                />
+              <Link href={l.href} className="btn-primary group">
                 {l.label}
                 <ForwardArrow />
               </Link>
+              </span>
             ) : (
               <Link key={l.href} href={l.href} className="transition-colors hover:text-ink">
                 {l.label}
