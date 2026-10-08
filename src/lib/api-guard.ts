@@ -32,6 +32,15 @@ export function isAllowedOrigin(request: Request): boolean {
       }
     })();
   if (!origin) return false;
+  // Same host as the page that's serving this request: whatever domain the
+  // site is reached on (its own domain, www, a preview URL), its own pages
+  // can call its own API. Browsers set Origin and page JS can't forge it.
+  try {
+    const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+    if (host && new URL(origin).host === host) return true;
+  } catch {
+    /* fall through to the explicit list */
+  }
   try {
     const site = new URL(SITE_URL);
     const allowed = [SITE_URL, `${site.protocol}//www.${site.host}`];
