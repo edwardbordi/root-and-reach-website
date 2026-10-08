@@ -10,11 +10,10 @@
 export const SITE_NAME = "Root & Reach Creative";
 
 /** Production origin — single source of truth for absolute URLs (sitemap, robots, metadataBase). */
-/* TODO(OPEN-ITEM 2): the domain isn't decided yet, so this is the Vercel
-   preview Cristina reviews. It was example.com, which made every og:image
-   point at a dead host — iMessage then grabbed the transparent portrait and
-   showed it on black. Switch to the real domain before launch. */
-export const SITE_URL = "https://root-and-reach-website.vercel.app";
+/* Live on her own domain since 2026-10-08 (apex is primary; www 308-redirects
+   here). This also feeds the API routes' same-site check, so it must be the
+   address visitors actually load. */
+export const SITE_URL = "https://rootandreachcreative.com";
 
 /* ---------------------------------------------------------------------------
  * Review chrome — TEMPORARY, for the client-review phase only
@@ -52,9 +51,8 @@ export const PREVIEW_WALKTHROUGH_URL: string =
 export const PREVIEW_FEEDBACK_EMAIL = "ed@realiiz.com";
 
 /** The URL the speed badge offers to test — usually the preview deployment. */
-/* The preview deployment Cristina is reviewing — NOT SITE_URL, which isn't
-   live. Assumes Vercel's default name for this repo; correct it once deployed. */
-export const PREVIEW_TEST_URL = "https://root-and-reach-website.vercel.app";
+/* The site is live on its own domain now, so this is just SITE_URL. */
+export const PREVIEW_TEST_URL = SITE_URL;
 
 /** What the walkthrough's "open this on your phone" QR points to. Ed's tracked
  *  short link (redirects to the preview). Empty falls back to PREVIEW_TEST_URL. */
